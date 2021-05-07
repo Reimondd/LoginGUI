@@ -3,12 +3,14 @@ import time
 import json
 # temporary storage that will move to the json file
 LoginStorage = json.load(open("Cool_Database.json", "r+"))
+local = time.localtime()
+localtime = time.strftime("%H:%M", local)
 
 
 def main():
 
     # gives u an option to login or create an account
-    option = pyautogui.confirm(title="Login", text="Choose your option", buttons=['Login', 'Create Account'])
+    option = pyautogui.confirm(title="Login", text="Welcome", buttons=['Login', 'Create Account'])
 
     if option == 'Login':
         username = pyautogui.prompt(title="Login", text="Enter your username").lower()
@@ -23,7 +25,7 @@ def main():
 
         if password in LoginStorage["Password"]:
             while True:  # you access this part after login
-                    very_hard_choice = pyautogui.confirm(title="What next?", text="Choose one of the options",
+                    very_hard_choice = pyautogui.confirm(title="Hello" + username, text="Your current time " + localtime +"\n What would you like to do?",
                                                          buttons=['Monke', 'Exit'])
 
                     if very_hard_choice == 'Exit':    # if you quit it exits the program
